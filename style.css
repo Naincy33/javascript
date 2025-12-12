@@ -1,0 +1,31 @@
+
+h1 {
+    color: green;
+    text-align: center;
+    font-size: 40px;
+}
+
+h2 {
+    color: rgb(11, 11, 29);
+    text-align: left;
+    font-size: 30px;
+}
+
+body {
+    background-color: rgb(240, 241, 237);
+}
+h3 {
+    color: rgb(88, 88, 188);
+    text-align: left;
+    font-size: 25px;
+}
+p {
+    color: brown;
+    text-align: left;
+    font-size: 20px;
+}
+h4 {
+    color: rgb(128, 0, 128);
+    text-align: center;
+    font-size: 22px;
+}
