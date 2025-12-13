@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events!</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="event-body">
+    <div class="event-container">
+
+        <h2>🎭 Understanding Events in JavaScript</h2>
+
+        <p class="story">
+            Ek website thi… bilkul shaant si.<br>
+            Buttons, inputs, links sab apni jagah chup-chaap baithe the.<br>
+            Koi harkat nahi, koi reaction nahi.<br>
+            Website zinda nahi lag rahi thi 😴
+        </p>
+
+        <p class="story">
+            🌟 <strong>Entry hoti hai EVENTS ki</strong><br><br>
+
+            Events bole:<br>
+            <em>“Jab user kuch karega… tab main jagunga!”</em>
+        </p>
+
+        <p class="story">
+            User ne button dabaya — <strong>CLICK!</strong><br>
+            Event turant bola:<br>
+            <em>“Oh! Click hua hai, chalo JavaScript ko bataate hain.”</em>
+        </p>
+
+        <h3>📌 Common Event Types</h3>
+
+        <ul class="event-list">
+            <li><strong>click</strong> – Jab user kisi element par click karta hai</li>
+            <li><strong>mouseover</strong> – Jab mouse element ke upar jata hai</li>
+            <li><strong>keydown</strong> – Jab keyboard ki koi key press hoti hai</li>
+            <li><strong>load</strong> – Jab page ya resource fully load ho jata hai</li>
+        </ul>
+
+    </div>
+
+    <div class="more">
+        <p>
+            🎧 <strong>addEventListener = Guard</strong> —
+            JavaScript ne ek guard bithaya:
+        </p>
+
+        <div class="example">
+            <img src="img/event_listener.png.png" alt="Event Listener Example">
+            <p>
+                Guard bola:
+                <em>“Jaise hi button dabega, main action chala dunga.”</em>
+                <br>
+                Ab website react karne lagi 😎
+            </p>
+        </div>
+    </div>
+
+    <div class="more">
+        <p>
+            🎯 <strong>Event Object = Message</strong> —
+            Jab bhi event hota hai, ek message banta hai:
+        </p>
+        <ul 🎒 Bag ke andar hota hai:>
+            <li><strong>type</strong>→ kisne kaand kiya</li>
+            <li><strong>target</strong>→ kaunsa event</li>
+            <li><strong>timestamp</strong>→ Kab event hua</li>
+            <li><strong>preventDefault()</strong>→ default kaam roko</li>
+        </ul>
+
+        <div class="example">
+
+            <img src="img/event_object.png.png" alt="Event Object Example">
+            <p>
+                Message me sab details hoti hain.
+                JavaScript usse padh kar decide karta hai ki kya karna hai.
+            </p>
+        </div>
+    </div>
+
+    <div class="more">
+        <h3>🌊 Event Bubbling = Gossip System</h3>
+        <p>
+            Button ek <code>div</code> ke andar tha,
+            <code>div</code> body ke andar, body <code>html</code> ke andar…
+        </p>
+
+        <p class="dialogue">
+            Button: “Mujhe click hua!” <br>
+            Div: “Mujhe bhi pata chala!” <br>
+            Body: “Mujhe bhi!” <br>
+            HTML: “Sabko pata chal gaya!”
+        </p>
+
+        <p class="highlight">
+            👉 Yehi <strong>EVENT BUBBLING</strong> hai
+            <span>(inner → outer)</span>
+        </p>
+
+        <hr>
+
+        <h3>🌪 Event Capturing = VIP Entry</h3>
+        <p>
+            Kabhi-kabhi website bolti hai:
+            <em>“Pehle parents sunenge, baad me child!”</em>
+        </p>
+
+        <p class="flow">
+            Body → Div → Button
+        </p>
+
+        <p class="highlight">
+            Ye hota hai <strong>EVENT CAPTURING</strong>
+            <span>(outer → inner)</span>
+        </p>
+    </div>
+
+
+    <h3 id="deviceTitle">Select your device</h3>
+
+    <select id="deviceSelect">
+        <option selected disabled>Choose your device</option>
+        <option value="samsung">Samsung</option>
+        <option value="mi">Xiaomi</option>
+        <option value="apple">Apple iPhone</option>
+        <option value="oppo">Oppo</option>
+    </select>
+
+    <p id="device"></p>
+
+
+
+
+    <script src="test.js"></script>
+
+</body>
+
+</html>
