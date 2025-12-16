@@ -57,20 +57,29 @@ h2 {
 
 
 
-.menu {
-    text-align: center;
-    margin: 20px 0;
-}
-
 .menu ul {
     list-style: none;
     padding: 0;
 }
 
 .menu li {
+    padding: 10px 14px;
     margin: 6px 0;
-    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
 }
+
+.menu li:hover {
+    background-color: #ffe0b2;
+}
+
+/* toggle class */
+.lt {
+    text-decoration: line-through;
+    color: gray;
+}
+
 
 .dom-story {
     max-width: 900px;
@@ -294,4 +303,18 @@ hr {
     font-size: 17px;
     font-weight: bold;
     color: #6a1b9a;
+}
+
+.mouse-body {
+    height: 100vh;
+    margin: 0;
+}
+
+#abcd {
+    position: absolute;
+    width: 55px;
+    height: 55px;
+    background-color: purple;
+    border-radius: 50%;
+    pointer-events: none;
 }
