@@ -70,3 +70,62 @@ if (ul) {
         }
     });
 }
+
+let form = document.querySelector("#myForm");
+
+let nameInput = document.querySelector("#name");
+let emailInput = document.querySelector("#email");
+let passwordInput = document.querySelector("#password");
+let courseSelect = document.querySelector("#course");
+let termsCheck = document.querySelector("#terms");
+
+form.addEventListener("submit", function (e) {
+    e.preventDefault(); // page reload rok diya
+
+    let isValid = true;
+
+    // clear old errors
+    document.querySelectorAll(".error").forEach(err => err.innerText = "");
+
+    // Name validation
+    if (nameInput.value.trim() === "") {
+        showError(nameInput, "Name is required");
+        isValid = false;
+    }
+
+    // Email validation
+    if (!emailInput.value.includes("@")) {
+        showError(emailInput, "Enter a valid email");
+        isValid = false;
+    }
+
+    // Password validation
+    if (passwordInput.value.length < 6) {
+        showError(passwordInput, "Password must be at least 6 characters");
+        isValid = false;
+    }
+
+    // Course validation
+    if (courseSelect.value === "") {
+        showError(courseSelect, "Please select a course");
+        isValid = false;
+    }
+
+    // Checkbox validation
+    if (!termsCheck.checked) {
+        showError(termsCheck, "You must accept the terms");
+        isValid = false;
+    }
+
+    // If everything valid
+    if (isValid) {
+        alert("Form submitted successfully 🎉");
+        form.reset();
+    }
+});
+
+// Helper function
+function showError(inputElement, message) {
+    let error = inputElement.parentElement.querySelector(".error");
+    error.innerText = message;
+}
