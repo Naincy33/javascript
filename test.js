@@ -73,59 +73,91 @@ if (ul) {
 
 let form = document.querySelector("#myForm");
 
-let nameInput = document.querySelector("#name");
-let emailInput = document.querySelector("#email");
-let passwordInput = document.querySelector("#password");
-let courseSelect = document.querySelector("#course");
-let termsCheck = document.querySelector("#terms");
+if (form) {
+    let nameInput = document.querySelector("#name");
+    let emailInput = document.querySelector("#email");
+    let passwordInput = document.querySelector("#password");
+    let courseSelect = document.querySelector("#course");
+    let termsCheck = document.querySelector("#terms");
 
-form.addEventListener("submit", function (e) {
-    e.preventDefault(); // page reload rok diya
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
 
-    let isValid = true;
+        let isValid = true;
 
-    // clear old errors
-    document.querySelectorAll(".error").forEach(err => err.innerText = "");
+        document.querySelectorAll(".error").forEach(err => err.innerText = "");
 
-    // Name validation
-    if (nameInput.value.trim() === "") {
-        showError(nameInput, "Name is required");
-        isValid = false;
+        if (nameInput.value.trim() === "") {
+            showError(nameInput, "Name is required");
+            isValid = false;
+        }
+
+        if (!emailInput.value.includes("@")) {
+            showError(emailInput, "Enter a valid email");
+            isValid = false;
+        }
+
+        if (passwordInput.value.length < 6) {
+            showError(passwordInput, "Password must be at least 6 characters");
+            isValid = false;
+        }
+
+        if (courseSelect.value === "") {
+            showError(courseSelect, "Please select a course");
+            isValid = false;
+        }
+
+        if (!termsCheck.checked) {
+            showError(termsCheck, "You must accept the terms");
+            isValid = false;
+        }
+
+        if (isValid) {
+            alert("Form submitted successfully 🎉");
+            form.reset();
+        }
+    });
+}
+function showError(inputElem, message) {
+    let errorElem = inputElem.nextElementSibling;
+    if (errorElem && errorElem.classList.contains("error")) {
+        errorElem.innerText = message;
     }
+}
 
-    // Email validation
-    if (!emailInput.value.includes("@")) {
-        showError(emailInput, "Enter a valid email");
-        isValid = false;
-    }
+// apply theme to body
+function applyTheme(theme) {
+    document.body.classList.remove("dark", "light");
+    document.body.classList.add(theme);
+}
 
-    // Password validation
-    if (passwordInput.value.length < 6) {
-        showError(passwordInput, "Password must be at least 6 characters");
-        isValid = false;
-    }
+// detect system theme
+function getSystemTheme() {
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
+}
 
-    // Course validation
-    if (courseSelect.value === "") {
-        showError(courseSelect, "Please select a course");
-        isValid = false;
-    }
+// set initial theme
+function setInitialTheme() {
+    const savedTheme = localStorage.getItem("theme");
+    applyTheme(savedTheme || getSystemTheme());
+}
 
-    // Checkbox validation
-    if (!termsCheck.checked) {
-        showError(termsCheck, "You must accept the terms");
-        isValid = false;
-    }
+setInitialTheme();
 
-    // If everything valid
-    if (isValid) {
-        alert("Form submitted successfully 🎉");
-        form.reset();
-    }
-});
+// toggle button
+let btn2 = document.querySelector("#themeBtn");
 
-// Helper function
-function showError(inputElement, message) {
-    let error = inputElement.parentElement.querySelector(".error");
-    error.innerText = message;
+if (btn2) {
+    btn2.addEventListener("click", function () {
+        const currentTheme = document.body.classList.contains("dark")
+            ? "dark"
+            : "light";
+
+        const newTheme = currentTheme === "dark" ? "light" : "dark";
+
+        applyTheme(newTheme);
+        localStorage.setItem("theme", newTheme);
+    });
 }
