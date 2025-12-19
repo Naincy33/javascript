@@ -472,3 +472,113 @@ button {
 button:hover {
     transform: scale(1.05);
 }
+
+/* Page */
+.login-body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #e0f2fe, #f8fafc);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Segoe UI", sans-serif;
+}
+
+/* Card */
+.login-container {
+    background: #fff;
+    padding: 35px;
+    width: 330px;
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.6s ease;
+}
+
+.login-container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #1e3a8a;
+}
+
+/* Inputs */
+.login-group {
+    margin-bottom: 18px;
+}
+
+.login-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 6px;
+    color: #444;
+}
+
+.login-group input {
+    width: 100%;
+    padding: 11px 14px;
+    font-size: 14px;
+    border-radius: 10px;
+    border: 1.8px solid #ddd;
+    outline: none;
+    background: #fafafa;
+    transition: 0.25s;
+}
+
+.login-group input:focus {
+    border-color: #2563eb;
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+/* Button (separate class, no conflict) */
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #2563eb, #1e40af);
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.login-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+}
+
+.login-btn:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+/* Footer */
+.login-footer {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 13px;
+}
+
+.login-footer a {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

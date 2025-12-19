@@ -74,50 +74,40 @@ if (ul) {
 let form = document.querySelector("#myForm");
 
 if (form) {
-    let nameInput = document.querySelector("#name");
-    let emailInput = document.querySelector("#email");
-    let passwordInput = document.querySelector("#password");
-    let courseSelect = document.querySelector("#course");
-    let termsCheck = document.querySelector("#terms");
-
     form.addEventListener("submit", function (e) {
         e.preventDefault();
 
-        let isValid = true;
+        let name = document.querySelector("#name").value.trim();
+        let email = document.querySelector("#email").value.trim();
+        let password = document.querySelector("#password").value.trim();
 
-        document.querySelectorAll(".error").forEach(err => err.innerText = "");
-
-        if (nameInput.value.trim() === "") {
-            showError(nameInput, "Name is required");
-            isValid = false;
+        if (!name || !email || !password) {
+            alert("All fields required");
+            return;
         }
 
-        if (!emailInput.value.includes("@")) {
-            showError(emailInput, "Enter a valid email");
-            isValid = false;
+        // get existing users
+        let users = JSON.parse(localStorage.getItem("users")) || [];
+
+        // check duplicate email
+        let userExists = users.some(user => user.email === email);
+
+        if (userExists) {
+            alert("User already registered with this email ❌");
+            return;
         }
 
-        if (passwordInput.value.length < 6) {
-            showError(passwordInput, "Password must be at least 6 characters");
-            isValid = false;
-        }
+        // add new user
+        users.push({ name, email, password });
 
-        if (courseSelect.value === "") {
-            showError(courseSelect, "Please select a course");
-            isValid = false;
-        }
+        // save back to localStorage
+        localStorage.setItem("users", JSON.stringify(users));
 
-        if (!termsCheck.checked) {
-            showError(termsCheck, "You must accept the terms");
-            isValid = false;
-        }
-
-        if (isValid) {
-            alert("Form submitted successfully 🎉");
-            form.reset();
-        }
+        alert("Registration successful 🎉");
+        form.reset();
     });
 }
+
 function showError(inputElem, message) {
     let errorElem = inputElem.nextElementSibling;
     if (errorElem && errorElem.classList.contains("error")) {
