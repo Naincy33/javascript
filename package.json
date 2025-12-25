@@ -1,5 +1,9 @@
 {
   "dependencies": {
+    "express": "^5.2.1",
     "jsdom": "^27.2.0"
+  },
+  "scripts": {
+    "start": "node app.js"
   }
 }
